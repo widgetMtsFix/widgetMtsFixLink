@@ -10,16 +10,6 @@
   </head>
 
   <body class="page">
-    <header class="header">
-      <img class="header__icon" src="./images/mts.svg" alt="egg" />
-    </header>
-
-    <img
-      class="widgetMTS__banner"
-      style="width: 50%; cursor: pointer"
-      src="./images/banner.png"
-      alt="bannerMTS"
-    />
     <iframe
       id="cookiesHackFrame"
       name="cookiesHackFrame"
@@ -40,10 +30,9 @@
 </html>
 
 <script>
-  const banner = document.querySelector(".widgetMTS__banner");
   const iframe = document.querySelector(".widgetMTS__iframe");
 
-  banner.addEventListener("click", () => {
+  const runWidget = () => {
     iframe.style.display = "block";
     setTimeout(() => {
       const message = {
@@ -58,7 +47,7 @@
         "https://urmdf-canary.ssl.mts.ru/widget/"
       );
     }, 1000);
-  });
+  };
 
   const readMessage = (event) => {
     if (event.data === false) {
@@ -67,4 +56,6 @@
   };
 
   window.addEventListener("message", readMessage, false);
+  console.log(window.location.search);
+  runWidget();
 </script>
