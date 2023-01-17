@@ -1,0 +1,12 @@
+.banner {
+  cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .banner {
+    width: 300px;
+  }
+}
+
+.banner:hover {
+  opacity: 0.7;
+}

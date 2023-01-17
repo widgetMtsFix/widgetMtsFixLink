@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "MTS Sans UltraWide";
+  src: local("MTSSans UltraWide"), local("MTSSans-UltraWide"),
+    url(../../fonts/MTSSans-UltraWide__W.woff2) format("woff2"),
+    url(../../fonts/MTSSans-UltraWide__W.woff) format("woff");
+  font-weight: 900;
+}
+
+@import url(__text/header__text.css);
+@import url(__icon/header__icon.css);
+
+.header {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media screen and (min-width: 300px) and (max-width: 767px) {
+  .header {
+    margin: 28px auto 42px;
+  }
+}

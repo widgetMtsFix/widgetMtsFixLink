@@ -1,0 +1,9 @@
+.header__icon {
+  height: 126px;
+}
+
+@media screen and (max-width: 600px) {
+  .header__icon {
+    height: 78px;
+  }
+}

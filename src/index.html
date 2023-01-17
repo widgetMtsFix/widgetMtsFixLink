@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>Widget MTS</title>
+  </head>
+
+  <body class="page">
+    <header class="header">
+      <img class="header__icon" src="./images/mts.svg" alt="egg" />
+    </header>
+
+    <img
+      class="widgetMTS__banner"
+      style="width: 50%; cursor: pointer"
+      src="./images/banner.png"
+      alt="bannerMTS"
+    />
+    <iframe
+      id="cookiesHackFrame"
+      name="cookiesHackFrame"
+      class="widgetMTS__iframe"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border: none;
+        width: 100%;
+        height: 100%;
+      "
+      allowfullscreen
+      src="https://urmdf-canary.ssl.mts.ru/widget/"
+    ></iframe>
+  </body>
+</html>
+
+<script>
+  const banner = document.querySelector(".widgetMTS__banner");
+  const iframe = document.querySelector(".widgetMTS__iframe");
+
+  banner.addEventListener("click", () => {
+    iframe.style.display = "block";
+    setTimeout(() => {
+      const message = {
+        token:
+          "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkFJS0hBTUlEVUwiLCJ1cm1kOk9yZ2FuaXphdGlvbklkIjoiMDEwMTAxODgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJub3JlcGx5QG10cy5ydSIsInVybWQ6RklPIjoi0JLQuNC00LbQtdGCINCi0JXQodCiIiwiZXhwIjoxNjk3NjEzMjA0LCJpc3MiOiJEZWFsZXJQb3J0YWxXaWRnZXQifQ.D8CEMkiKbZ2K4TFguCihPENtirVTqM63BCcF5MzvyVdn79YJHJpI93VsiRectYREmIYIQ-Fw5q7bX_paGbjERQ",
+        actions: [{ type: "close_widget", value: false }],
+        address: "Энгельс",
+      };
+
+      iframe.contentWindow.postMessage(
+        `${JSON.stringify(message)}`,
+        "https://urmdf-canary.ssl.mts.ru/widget/"
+      );
+    }, 1000);
+  });
+
+  const readMessage = (event) => {
+    if (event.data === false) {
+      iframe.style.display = "none";
+    }
+  };
+
+  window.addEventListener("message", readMessage, false);
+</script>
